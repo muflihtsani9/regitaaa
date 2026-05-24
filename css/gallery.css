@@ -96,6 +96,7 @@
   object-position: center;
   display: block;
   z-index: 1;
+  filter: grayscale(100%);
 }
 
 .slide-img-overlay {
