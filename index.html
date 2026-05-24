@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030810" />
+    <title>Regita’s birthday ✦</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper CSS (CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- AOS CSS (CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    />
+
+    <!-- GLightbox CSS (CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+
+    <!-- Project CSS — ORDER MATTERS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/effects.css" />
+    <link rel="stylesheet" href="./css/animation.css" />
+    <link rel="stylesheet" href="./css/gallery.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="stylesheet" href="./css/alignment-fix.css" />
+    <link rel="stylesheet" href="./css/enhancements.css" />
+    <link rel="stylesheet" href="./css/ice-theme.css" />
+  </head>
+  <body>
+    <!-- ═══════════════════════════════════════════════════════════
+     FLOATING HEARTS (ambient, fixed overlay)
+═══════════════════════════════════════════════════════════════ -->
+    <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     GLOBAL CINEMATIC BACKGROUND
+═══════════════════════════════════════════════════════════════ -->
+    <div class="global-bg" aria-hidden="true">
+      <!-- Three.js 3D particle layer -->
+      <canvas class="three-canvas" id="threeCanvas"></canvas>
+      <canvas class="bg-canvas" id="bgCanvas"></canvas>
+      <div class="bg-aurora bg-aurora-1"></div>
+      <div class="bg-aurora bg-aurora-2"></div>
+      <div class="bg-aurora bg-aurora-3"></div>
+      <div class="bg-mesh"></div>
+      <div class="bg-noise"></div>
+      <div class="bg-orb bg-orb-a"></div>
+      <div class="bg-orb bg-orb-b"></div>
+      <div class="bg-orb bg-orb-c"></div>
+      <div class="bg-orb bg-orb-d"></div>
+      <div class="bg-fog"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     CINEMATIC INTRO SCREEN
+═══════════════════════════════════════════════════════════════ -->
+    <div class="intro" id="intro" role="dialog" aria-label="Birthday intro">
+      <div class="intro-bg"></div>
+      <canvas class="intro-canvas" id="introCanvas"></canvas>
+      <div class="intro-aurora" aria-hidden="true"></div>
+      <div class="intro-content">
+        <div class="intro-logo" id="introLogo" aria-hidden="true">♡</div>
+        <div class="intro-lines">
+          <span class="intro-line-text" id="iLine1"
+            >A Luxury Birthday Experience</span
+          >
+          <div class="intro-line-large" aria-label="Happy Birthday">
+            Happy B'day
+          </div>
+          <span class="intro-line-sub" id="iLine3">with all my love</span>
+        </div>
+        <div class="intro-rule" id="introRule"></div>
+        <div class="intro-date-line" id="introDateLine"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════════════ -->
+    <nav
+      class="navbar"
+      id="navbar"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div class="nav-inner">
+        <a class="nav-logo" href="#hero" aria-label="Home">
+          <span class="nav-brand-heart">♡</span>
+          <span class="nav-brand-name">Regita’s birthday</span>
+        </a>
+
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a class="nav-link" href="#hero">Home</a></li>
+          <li><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link" href="#reasons">Reasons</a></li>
+          <li><a class="nav-link" href="#message">Message</a></li>
+          <li><a class="nav-link" href="#finale">Final</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+      <div class="hero-parallax-layer" aria-hidden="true">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+        <div class="hero-streak hero-streak-1"></div>
+        <div class="hero-streak hero-streak-2"></div>
+        <div class="hero-streak hero-streak-3"></div>
+      </div>
+
+      <canvas
+        class="hero-bokeh-canvas"
+        id="heroBokeh"
+        aria-hidden="true"
+      ></canvas>
+      <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">✦ &nbsp; A Birthday Celebration &nbsp; ✦</p>
+
+        <div class="hero-title-wrap">
+          <span class="hero-script">Happy</span>
+          <div class="hero-title-rule" aria-hidden="true"></div>
+          <span class="hero-serif">Birthday</span>
+          <span class="hero-name">Regita</span>
+        </div>
+
+        <div class="hero-ornament" aria-hidden="true">
+          <div class="hero-orn-line"></div>
+          <span class="hero-orn-diamond">✦</span>
+          <div class="hero-orn-line"></div>
+        </div>
+
+        <p class="hero-date" id="heroDate"></p>
+        <p class="hero-tagline">Today the universe celebrates you</p>
+
+        <div class="hero-cta-wrap">
+          <a
+            href="#gallery"
+            class="btn-luxury"
+            data-magnetic
+            aria-label="Explore gallery"
+          >
+            <span class="btn-glow"></span>
+            <span class="btn-shine"></span>
+            <span class="btn-text">Explore ✦</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-divider" aria-hidden="true">
+        <div class="divider-line"></div>
+        <span class="divider-diamond">✦</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        <span>scroll</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     GALLERY
+═══════════════════════════════════════════════════════════════ -->
+    <section class="gallery-section" id="gallery">
+      <div class="section-header" data-aos="fade-up">
+        <p class="section-pre">Just Her</p>
+        <h2 class="section-title">A Gallery of Her Beauty</h2>
+        <p class="section-sub">
+          Every picture proves how effortlessly she shines.
+        </p>
+      </div>
+
+      <div class="gallery-swiper-wrap">
+        <!-- Arrows must be OUTSIDE #gallerySwiper for correct positioning -->
+        <button class="gallery-prev" aria-label="Previous slide">
+          &#8592;
+        </button>
+        <button class="gallery-next" aria-label="Next slide">&#8594;</button>
+
+        <div id="gallerySwiper" class="swiper">
+          <div class="swiper-wrapper">
+            <!-- Slides injected by script.js -->
+          </div>
+        </div>
+
+        <div class="gallery-pagination swiper-pagination"></div>
+      </div>
+
+      <div class="gallery-hint" aria-hidden="true">
+        <div class="gallery-hint-line"></div>
+        <p>Swipe to explore</p>
+        <div class="gallery-hint-line"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     REASONS
+═══════════════════════════════════════════════════════════════ -->
+    <section class="reasons-section" id="reasons">
+      <div class="reasons-bg-glow" aria-hidden="true"></div>
+
+      <div class="section-header" data-aos="fade-up">
+        <p class="section-pre">Why I Love You</p>
+        <h2 class="section-title">A Thousand Reasons &amp; Counting</h2>
+        <p class="section-sub">
+          Just a few of the infinite ways you make my world magnificent
+        </p>
+      </div>
+
+      <div class="reasons-grid">
+        <article
+          class="reason-card tilt-card"
+          data-aos="fade-up"
+          data-aos-delay="0"
+        >
+          <p class="reason-number">01</p>
+          <span class="reason-icon">🌹</span>
+          <h3 class="reason-title">Your Radiance</h3>
+          <p class="reason-text">
+            You walk into a room and everything becomes more beautiful. It is an
+            entirely unfair talent.
+          </p>
+          <div class="reason-glow"></div>
+        </article>
+
+        <article
+          class="reason-card tilt-card"
+          data-aos="fade-up"
+          data-aos-delay="80"
+        >
+          <p class="reason-number">02</p>
+          <span class="reason-icon">💫</span>
+          <h3 class="reason-title">Your Laughter</h3>
+          <p class="reason-text">
+            The sound of your laugh is the best song ever written. I would
+            listen to it forever.
+          </p>
+          <div class="reason-glow"></div>
+        </article>
+
+        <article
+          class="reason-card tilt-card"
+          data-aos="fade-up"
+          data-aos-delay="160"
+        >
+          <p class="reason-number">03</p>
+          <span class="reason-icon">✨</span>
+          <h3 class="reason-title">Your Kindness</h3>
+          <p class="reason-text">
+            The way you treat people — with such gentle grace — reminds me every
+            day what beauty truly means.
+          </p>
+          <div class="reason-glow"></div>
+        </article>
+
+        <article
+          class="reason-card tilt-card"
+          data-aos="fade-up"
+          data-aos-delay="240"
+        >
+          <p class="reason-number">04</p>
+          <span class="reason-icon">🌙</span>
+          <h3 class="reason-title">Your Strength</h3>
+          <p class="reason-text">
+            You carry the world with elegance and never let anything dim the
+            light you carry inside you.
+          </p>
+          <div class="reason-glow"></div>
+        </article>
+
+        <article
+          class="reason-card tilt-card"
+          data-aos="fade-up"
+          data-aos-delay="320"
+        >
+          <p class="reason-number">05</p>
+          <span class="reason-icon">🌸</span>
+          <h3 class="reason-title">Your Heart</h3>
+          <p class="reason-text">
+            Loving you feels like coming home to a place I never knew I was
+            missing until you.
+          </p>
+          <div class="reason-glow"></div>
+        </article>
+
+        <article
+          class="reason-card tilt-card"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          <p class="reason-number">06</p>
+          <span class="reason-icon">⭐</span>
+          <h3 class="reason-title">Simply You</h3>
+          <p class="reason-text">
+            Every little thing — your voice, your smile, your thoughts — I love
+            every single piece of you.
+          </p>
+          <div class="reason-glow"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     MESSAGE
+═══════════════════════════════════════════════════════════════ -->
+    <section class="message-section" id="message">
+      <div class="message-bg-orb msg-orb-1" aria-hidden="true"></div>
+      <div class="message-bg-orb msg-orb-2" aria-hidden="true"></div>
+
+      <div class="message-container">
+        <div class="section-header" data-aos="fade-up">
+          <p class="section-pre">A Letter For You</p>
+          <h2 class="section-title">Words From My Heart</h2>
+        </div>
+
+        <div class="message-card tilt-card">
+          <!-- ✏️ EDITABLE LETTER — edit your personal message below -->
+          <div class="message-letter">
+            <span class="message-letter-label"
+              >✦ &nbsp; Happy birthday Regitaaa🎉 &nbsp; ✦</span
+            >
+
+            <div class="message-text">
+              <!--
+            ══════════════════════════════════════════════
+            ✏️  TULIS PESANMU DI SINI
+            Setiap <p class="message-para"> = satu paragraf.
+            Gunakan <span class="message-highlight">teks</span>
+            untuk kalimat yang ingin kamu tonjolkan.
+            ══════════════════════════════════════════════
+          -->
+
+              <p class="message-para">
+                Semoga di umur yang baru ini hidup kamu dipenuhi lebih banyak
+                hal baik dari tahun-tahun sebelumnya. Semoga semua yang lagi
+                kamu perjuangkan sekarang bisa berjalan lancar dan satu per satu
+                tercapai sesuai yang kamu harapkan. Semoga kesehatan selalu
+                dijaga, rezekinya diperlancar, langkahnya dimudahkan ke mana pun
+                kamu pergi, dan hatinya selalu dipenuhi rasa tenang serta
+                bahagia.
+              </p>
+
+              <p class="message-para">
+                Aku juga berharap semoga kamu selalu dikelilingi orang-orang
+                baik yang tulus sayang sama kamu, yang selalu support kamu di
+                keadaan apa pun. Kalau lagi capek atau banyak pikiran, semoga
+                selalu dikasih kekuatan buat lewatin semuanya. Jangan terlalu
+                keras sama diri sendiri yaa, kamu juga berhak istirahat dan
+                bahagia.
+              </p>
+
+              <p class="message-para">
+                Dan semoga kamu nggak risih yaa sama aku hehe, kalau ada apa-apa
+                aku ada di sini buat kamu.
+              </p>
+            </div>
+
+            <div class="message-signature">
+              <span class="message-signature-name">From your admirer🤍</span>
+            </div>
+          </div>
+          <!-- ✏️ END EDITABLE LETTER -->
+
+          <!-- Closing -->
+          <div class="message-final">
+            <div class="message-final-rule">
+              <div class="divider-line"></div>
+              <span class="divider-diamond">✦</span>
+              <div class="divider-line"></div>
+            </div>
+            <p class="message-final-text">Forever &amp; Always</p>
+            <p class="message-final-sub">
+              With every beat of my heart — Happy Birthday, my love.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     FINALE
+═══════════════════════════════════════════════════════════════ -->
+    <section class="finale-section" id="finale">
+      <canvas
+        class="finale-canvas"
+        id="finaleCanvas"
+        aria-hidden="true"
+      ></canvas>
+      <div class="finale-glow-ring" aria-hidden="true"></div>
+      <div class="finale-hearts" id="finaleHearts" aria-hidden="true"></div>
+
+      <div class="finale-content">
+        <span class="finale-icon" aria-hidden="true">♡</span>
+        <p class="finale-pre">✦ &nbsp; the end &amp; the beginning &nbsp; ✦</p>
+        <h2 class="finale-title">Happy <em>Birthday</em></h2>
+
+        <div class="finale-divider" aria-hidden="true">
+          <div class="divider-line"></div>
+          <span class="divider-diamond">✦</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <p class="finale-quote">
+          "Keep being the Regita i’ve always known yaa."
+        </p>
+        <p class="finale-wish">
+          Here is to you — and to every magnificent year ahead. 🌹
+        </p>
+
+        <button
+          class="confetti-btn"
+          id="confettiBtn"
+          aria-label="Celebrate with confetti"
+        >
+          <span class="confetti-btn-glow"></span>
+          <span class="confetti-btn-text">✦ Celebrate ✦</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+    <footer class="footer">
+      <div
+        class="footer-particles"
+        id="footerParticles"
+        aria-hidden="true"
+      ></div>
+      <div class="footer-divider" aria-hidden="true">
+        <div class="divider-line"></div>
+        <span class="divider-diamond">✦</span>
+        <div class="divider-line"></div>
+      </div>
+      <div class="footer-content">
+        <div class="footer-diamond" aria-hidden="true">♡</div>
+        <h3 class="footer-title">Made With Love</h3>
+        <p class="footer-sub">For the most extraordinary person in my world</p>
+        <p class="footer-quote">
+          "In you, I found everything I never knew I was searching for."
+        </p>
+        <p class="footer-copy">Happy Birthday &nbsp;✦&nbsp; With All My Love</p>
+      </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS
+     FIX: Only load ONE script file (script.js).
+     core.js / navbar.js / animation.js / slider.js dihapus dari
+     load list karena semua fungsinya sudah ada di script.js.
+     Loading keduanya = double GSAP registration + fungsi konflik.
+═══════════════════════════════════════════════════════════════ -->
+    <!-- GSAP + Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+
+    <!-- Lenis smooth scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+    <!-- canvas-confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <!-- GLightbox -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- Project JS — single orchestrator file -->
+    <script src="./js/script.js"></script>
+    <!-- Enhancement JS -->
+    <script src="./js/enhancements.js"></script>
+  </body>
+</html>

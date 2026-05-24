@@ -1,0 +1,249 @@
+/* ============================================================
+   ICE THEME — ice-theme.css
+   Targeted overrides for gradients that couldn't be fully
+   covered by variable replacement alone. Load LAST.
+============================================================ */
+
+/* ── Body & Global Background ─────────────────────────────── */
+body {
+  background: #030810;
+}
+
+/* ── Hero vignette — deep navy instead of purple-black ────── */
+.hero-vignette {
+  background: radial-gradient(ellipse 80% 70% at 50% 50%,
+    transparent 40%, rgba(3,8,16,0.75) 100%);
+}
+
+/* ── Hero eyebrow ─────────────────────────────────────────── */
+.hero-eyebrow {
+  color: rgba(179, 229, 252, 0.7);
+  letter-spacing: 0.3em;
+}
+
+/* ── Hero rule line — ice shimmer ─────────────────────────── */
+.hero-title-rule {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(79, 195, 247, 0.6),
+    rgba(144, 202, 249, 0.8),
+    rgba(79, 195, 247, 0.6),
+    transparent);
+}
+
+/* ── Hero name tag — ice cool ─────────────────────────────── */
+.hero-name {
+  color: rgba(179, 229, 252, 0.55);
+  border-top-color: rgba(79, 195, 247, 0.2);
+  border-bottom-color: rgba(79, 195, 247, 0.2);
+  letter-spacing: 0.35em;
+}
+
+/* ── Hero tagline ─────────────────────────────────────────── */
+.hero-tagline {
+  color: rgba(179, 229, 252, 0.5);
+}
+
+/* ── Hero orbs — cool blue ────────────────────────────────── */
+.hero-orb-1 {
+  background: radial-gradient(circle,
+    rgba(79, 195, 247, 0.22) 0%,
+    rgba(30, 100, 200, 0.12) 40%,
+    transparent 70%);
+}
+.hero-orb-2 {
+  background: radial-gradient(circle,
+    rgba(92, 107, 192, 0.2) 0%,
+    rgba(20, 60, 160, 0.1) 40%,
+    transparent 70%);
+}
+.hero-orb-3 {
+  background: radial-gradient(circle,
+    rgba(144, 202, 249, 0.15) 0%,
+    transparent 70%);
+}
+
+/* ── Luxury button ────────────────────────────────────────── */
+.btn-luxury {
+  border-color: rgba(79, 195, 247, 0.35);
+  color: #e3f2fd;
+}
+.btn-luxury::before {
+  background: linear-gradient(135deg,
+    rgba(79, 195, 247, 0.12) 0%,
+    rgba(144, 202, 249, 0.18) 50%,
+    rgba(79, 195, 247, 0.12) 100%);
+}
+.btn-luxury:hover {
+  border-color: rgba(79, 195, 247, 0.7);
+  box-shadow: 0 0 40px rgba(79, 195, 247, 0.18), 0 8px 30px rgba(0,0,0,0.4);
+}
+.btn-glow {
+  background: radial-gradient(ellipse at center,
+    rgba(79, 195, 247, 0.3) 0%, transparent 70%);
+}
+
+/* ── Reasons section background glow ─────────────────────── */
+.reasons-bg-glow {
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 50%,
+      rgba(79, 195, 247, 0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 20% 80%,
+      rgba(92, 107, 192, 0.04) 0%, transparent 60%);
+}
+
+/* ── Reason card top shimmer line ─────────────────────────── */
+.reason-card::before {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(79, 195, 247, 0.5),
+    rgba(144, 202, 249, 0.6),
+    transparent);
+}
+
+/* ── Message section orbs ─────────────────────────────────── */
+.msg-orb-1 {
+  background: radial-gradient(circle,
+    rgba(79, 195, 247, 0.12) 0%, transparent 70%);
+  width: 500px; height: 500px;
+  top: -100px; left: -150px;
+}
+.msg-orb-2 {
+  background: radial-gradient(circle,
+    rgba(92, 107, 192, 0.1) 0%, transparent 70%);
+  width: 400px; height: 400px;
+  bottom: -80px; right: -100px;
+}
+
+/* ── Message card top border ──────────────────────────────── */
+.message-card {
+  border-color: rgba(79, 195, 247, 0.12);
+  background: linear-gradient(135deg,
+    rgba(255,255,255,0.03) 0%,
+    rgba(79, 195, 247, 0.04) 100%);
+}
+.message-card::before {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(79, 195, 247, 0.4),
+    rgba(144, 202, 249, 0.5),
+    transparent);
+}
+.message-card:hover {
+  border-color: rgba(79, 195, 247, 0.28);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(79, 195, 247, 0.06);
+}
+
+/* ── Finale section ───────────────────────────────────────── */
+.finale-glow-ring {
+  border-color: rgba(79, 195, 247, 0.08);
+  box-shadow:
+    inset 0 0 80px rgba(79, 195, 247, 0.04),
+    0 0 120px rgba(79, 195, 247, 0.06);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.footer {
+  background: linear-gradient(to top,
+    rgba(3, 8, 16, 0.98) 0%,
+    rgba(5, 15, 30, 0.9) 100%);
+  border-top: 1px solid rgba(79, 195, 247, 0.08);
+}
+
+/* ── Nav scrolled state ───────────────────────────────────── */
+.navbar.scrolled {
+  background: rgba(3, 8, 22, 0.88);
+  border-color: rgba(79, 195, 247, 0.1);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(79, 195, 247, 0.06);
+}
+
+/* ── Mobile nav panel ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav-links {
+    background: rgba(3, 10, 28, 0.97);
+    border-left-color: rgba(79, 195, 247, 0.1);
+  }
+}
+
+/* ── Nav link active/hover ────────────────────────────────── */
+.nav-link {
+  color: rgba(179, 229, 252, 0.55);
+}
+.nav-link:hover,
+.nav-link.active {
+  color: #b3e5fc;
+}
+.nav-link::after {
+  background: var(--rose);  /* ice blue underline */
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #0277bd, #4fc3f7);
+}
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection {
+  background: rgba(79, 195, 247, 0.35);
+  color: #fff;
+}
+
+/* ── Divider lines ────────────────────────────────────────── */
+.divider-line {
+  background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.5));
+}
+.hero-divider .divider-line:last-child,
+.finale-divider .divider-line:last-child,
+.footer-divider .divider-line:last-child,
+.message-final-rule .divider-line:last-child {
+  background: linear-gradient(90deg, rgba(79, 195, 247, 0.5), transparent);
+}
+
+/* ── Gallery hint ─────────────────────────────────────────── */
+.gallery-hint-line {
+  background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.3), transparent);
+}
+
+/* ══════════════════════════════════════════════════════════
+   REASONS GRID LAYOUT FIX
+   Root cause: 3-col grid with 6 cards. On exactly 900px
+   breakpoint, the grid switches to repeat(2,1fr), but if the
+   viewport sits between breakpoints cards can misfire with
+   AOS + GSAP double-animate leaving opacity:0.
+   Fix: guarantee the grid always has a visible baseline and
+   use auto-fill so the last row doesn't leave an orphan gap.
+══════════════════════════════════════════════════════════ */
+.reasons-grid {
+  /* Keep strict column counts — auto-fill was causing uneven rows */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Force all reason cards to be visible as a safety net */
+.reason-card {
+  /* Fallback visibility — GSAP will animate from opacity:0 only
+     when ScrollTrigger fires. If it misses (card in viewport on
+     load, or reduced-motion), this ensures the card is shown. */
+  will-change: transform, opacity;
+}
+
+/* On large screens, keep the strict 3-col layout */
+@media (min-width: 901px) {
+  .reasons-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* On tablet: explicit 2-col */
+@media (max-width: 900px) {
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* On mobile: single column */
+@media (max-width: 560px) {
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+}

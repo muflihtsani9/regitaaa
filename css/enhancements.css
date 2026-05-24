@@ -1,0 +1,334 @@
+/* ============================================================
+   BIRTHDAY ENHANCEMENTS — enhancements.css
+   Add: Three.js canvas · Navbar brand name · Lightbox hint
+        Confetti button · GLightbox theme overrides
+   Load AFTER alignment-fix.css (last in <head>)
+============================================================ */
+
+/* ============================================================
+   THREE.JS CANVAS — Full-screen behind everything
+============================================================ */
+.three-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;          /* behind bg-canvas (z-index: 1) */
+  pointer-events: none;
+  opacity: 0.7;        /* subtle — doesn't compete with aurora */
+}
+
+/* Ensure existing bg-canvas sits above Three.js layer */
+.bg-canvas {
+  z-index: 1;
+}
+
+/* ============================================================
+   NAVBAR BRAND — Name + heart side by side on top-left
+============================================================ */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+}
+
+.nav-brand-heart {
+  font-size: 1.4rem;
+  color: var(--rose);
+  filter: drop-shadow(0 0 10px var(--rose-glow));
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.nav-brand-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+  color: var(--gold-light);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  line-height: 1;
+  text-shadow:
+    0 0 20px rgba(144, 202, 249, 0.5),
+    0 0 40px rgba(144, 202, 249, 0.2);
+  transition: color 0.4s, text-shadow 0.4s;
+}
+
+.nav-logo:hover .nav-brand-heart {
+  transform: scale(1.25) rotate(12deg);
+  filter: drop-shadow(0 0 20px var(--rose));
+}
+
+.nav-logo:hover .nav-brand-name {
+  color: #fff;
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(144, 202, 249, 0.3);
+}
+
+/* ============================================================
+   GALLERY — Lightbox hint overlay on slide image hover
+============================================================ */
+.slide-lightbox-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.slide-lightbox-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 4, 7, 0);
+  transition: background 0.4s ease;
+  z-index: 5;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.slide-lightbox-hint span {
+  font-size: 2rem;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+  font-style: normal;
+}
+
+.slide-lightbox-link:hover .slide-lightbox-hint {
+  background: rgba(5, 4, 7, 0.35);
+}
+
+.slide-lightbox-link:hover .slide-lightbox-hint span {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Cursor hint */
+.slide-lightbox-link:hover {
+  cursor: zoom-in;
+}
+
+/* ============================================================
+   CONFETTI BUTTON — Finale section CTA
+============================================================ */
+.confetti-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.5rem;
+  padding: 0.9rem 2.8rem;
+  border-radius: 50px;
+  border: 1px solid rgba(144, 202, 249, 0.4);
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0; /* animated in by GSAP on scroll */
+  transition: border-color 0.4s, transform 0.2s;
+
+  /* Soft shimmer gradient bg */
+  background: linear-gradient(
+    135deg,
+    rgba(79, 195, 247, 0.12) 0%,
+    rgba(144, 202, 249, 0.08) 50%,
+    rgba(92, 107, 192, 0.12) 100%
+  );
+}
+
+.confetti-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.08) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.7s ease;
+}
+
+.confetti-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.confetti-btn:hover {
+  border-color: rgba(144, 202, 249, 0.7);
+  transform: translateY(-2px);
+}
+
+.confetti-btn:active {
+  transform: scale(0.96);
+}
+
+.confetti-btn-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50px;
+  background: radial-gradient(ellipse at center, rgba(79,195,247,0.3), transparent 70%);
+  filter: blur(8px);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.confetti-btn:hover .confetti-btn-glow {
+  opacity: 1;
+}
+
+.confetti-btn-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  text-shadow: 0 0 20px rgba(144, 202, 249, 0.5);
+}
+
+/* ============================================================
+   GLIGHTBOX — Custom theme overrides to match site palette
+============================================================ */
+
+/* Backdrop */
+.glightbox-clean .goverlay {
+  background: rgba(5, 4, 7, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Container */
+.glightbox-clean .gcontainer {
+  background: transparent;
+}
+
+/* Image wrapper */
+.glightbox-clean .gslide-image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(144, 202, 249, 0.15),
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(79, 195, 247, 0.08);
+}
+
+/* Close button */
+.glightbox-clean .gclose {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  backdrop-filter: blur(8px);
+}
+
+.glightbox-clean .gclose:hover {
+  background: rgba(79, 195, 247, 0.2);
+  border-color: rgba(79, 195, 247, 0.5);
+  transform: rotate(90deg);
+}
+
+.glightbox-clean .gclose svg {
+  color: var(--gold-light, #e3f2fd);
+  width: 18px;
+  height: 18px;
+}
+
+/* Prev / Next arrows */
+.glightbox-clean .gnext,
+.glightbox-clean .gprev {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, border-color 0.3s;
+  backdrop-filter: blur(8px);
+}
+
+.glightbox-clean .gnext:hover,
+.glightbox-clean .gprev:hover {
+  background: rgba(144, 202, 249, 0.15);
+  border-color: rgba(144, 202, 249, 0.4);
+}
+
+.glightbox-clean .gnext svg,
+.glightbox-clean .gprev svg {
+  color: var(--gold-light, #e3f2fd);
+  width: 18px;
+  height: 18px;
+}
+
+/* Caption / description */
+.glightbox-clean .gslide-description {
+  background: linear-gradient(to top, rgba(5,4,7,0.9), rgba(5,4,7,0.4));
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.25rem 2rem;
+}
+
+.glightbox-clean .gslide-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-light, #e3f2fd);
+  margin-bottom: 0.3rem;
+}
+
+.glightbox-clean .gslide-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Loading indicator */
+.glightbox-clean .gloader {
+  border-top-color: var(--rose, #4fc3f7);
+  border-right-color: var(--gold, #90caf9);
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+============================================================ */
+@media (max-width: 600px) {
+  .nav-brand-name {
+    font-size: 1.1rem;
+  }
+
+  .confetti-btn {
+    padding: 0.8rem 2.2rem;
+  }
+
+  .glightbox-clean .gnext,
+  .glightbox-clean .gprev {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-brand-name {
+    display: none; /* Very small screens: show heart only */
+  }
+}

@@ -1,0 +1,241 @@
+/* ============================================================
+   LUXURY BIRTHDAY EXPERIENCE — responsive.css
+   Responsive: Navbar · Gallery · Sections · All Breakpoints
+   ============================================================ */
+
+/* ============================================================
+   NAVBAR — RESPONSIVE (≤ 900px → hamburger menu)
+============================================================ */
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    width: min(300px, 80vw);
+    height: 100dvh;
+    background: rgba(3,10,25,0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    transition: right 0.5s var(--ease-luxury);
+    opacity: 1;
+    transform: none;
+    border-left: 1px solid var(--glass-border);
+    z-index: 2000;
+  }
+  .nav-links.open { right: 0; }
+  .nav-link { font-size: 1rem; }
+
+  /* Gallery: smaller nav arrows on tablet */
+  .gallery-prev, .gallery-next { width: 38px !important; height: 38px !important; }
+
+  /* Reasons: 2-column grid — equal widths */
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* ============================================================
+   TABLET — ≤ 768px
+============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --nav-h: 64px;
+    --section-pad: clamp(4rem, 10vw, 5.5rem);
+  }
+
+  .hero-script { font-size: clamp(3.5rem, 12vw, 5.5rem); }
+  .hero-serif  { font-size: clamp(2.4rem, 9.5vw, 4.5rem); }
+  .message-card { padding: 2rem 1.5rem; }
+  .btn-luxury { padding: 0.9rem 2rem; }
+  .hero-orb-1, .hero-orb-2 { filter: blur(60px); }
+  .reason-card { padding: 2rem 1.6rem; }
+  .finale-glow-ring { width: 300px; height: 300px; }
+  .message-final-text { font-size: clamp(1.5rem, 6vw, 2rem); }
+}
+
+/* ============================================================
+   MOBILE SMALL — ≤ 600px
+============================================================ */
+@media (max-width: 600px) {
+  /* Wishes stack single column */
+  .message-wishes { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   MOBILE — ≤ 560px
+============================================================ */
+@media (max-width: 560px) {
+  /* Reasons: single column */
+  .reasons-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ============================================================
+   MOBILE — ≤ 480px
+============================================================ */
+@media (max-width: 480px) {
+  .hero-script { font-size: clamp(3rem, 15vw, 5rem); }
+  .hero-serif  { font-size: clamp(2.2rem, 12vw, 4rem); letter-spacing: 0.2em; padding-left: 0.2em; }
+  .hero-name   { font-size: clamp(0.62rem, 3vw, 0.8rem); width: clamp(120px, 70vw, 200px); }
+  .reason-title { font-size: 1.1rem; }
+  .message-typewriter-wrap { padding-bottom: 2rem; margin-bottom: 2rem; }
+  .typewriter-text { min-height: 5em; font-size: clamp(1.1rem, 5vw, 1.4rem); }
+  .wish-item p { font-size: 0.96rem; }
+
+  /* On very small screens, hide arrows — swipe is enough */
+  .gallery-prev, .gallery-next { display: none !important; }
+  .gallery-hint p { font-size: 0.6rem; }
+}
+
+/* ============================================================
+   MOBILE XS — ≤ 380px
+============================================================ */
+@media (max-width: 380px) {
+  .hero-script { font-size: clamp(2.8rem, 14vw, 4.5rem); }
+  .hero-serif  { font-size: clamp(2rem, 11vw, 3.5rem); letter-spacing: 0.15em; padding-left: 0.15em; }
+}
+
+/* ============================================================
+   PERFORMANCE: prefers-reduced-motion
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   MOBILE PERFORMANCE — reduce heavy GPU effects on phones/tablets
+   These are the primary causes of scroll lag on mobile.
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* 1. Remove backdrop-filter — most expensive GPU effect on mobile */
+  .reason-card,
+  .message-card,
+  .navbar,
+  .navbar.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* 2. Simplify heavy drop-shadow filters — keep glow feel, reduce layers */
+  .reason-icon,
+  .message-label,
+  .footer-diamond,
+  .nav-logo {
+    filter: none !important;
+  }
+
+  /* 3. Disable orb blur animations — filter:blur on animated elements kills FPS */
+  .msg-orb-1,
+  .msg-orb-2,
+  .hero-orb-1,
+  .hero-orb-2 {
+    display: none;
+  }
+
+  /* 4. Disable light streaks — continuous translateX animation on mobile */
+  .hero-streak-1,
+  .hero-streak-2,
+  .hero-streak-3 {
+    display: none;
+  }
+
+  /* 5. Disable aurora background animation in intro — only runs during intro */
+  .intro-aurora {
+    animation: none !important;
+    opacity: 0.6;
+  }
+
+  /* 6. Promote scroll containers to their own compositor layer */
+  html, body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 7. Contain paint on heavy sections */
+  .hero,
+  .reasons-section,
+  .message-section,
+  .finale-section {
+    contain: layout style;
+  }
+
+  /* 8. Ensure touch-action is set — prevents 300ms tap delay and scroll blocking */
+  body {
+    touch-action: pan-y;
+  }
+}
+
+/* ============================================================
+   FINALE SECTION — CSS safety fallback
+   Ensures "Happy Birthday" text is always visible.
+   GSAP animates FROM opacity:0 and applies clearProps on complete,
+   but if JS fails or ScrollTrigger misfires, these elements must
+   still be visible. The gsap.from() call sets opacity:0 as the
+   animation START, so CSS opacity:1 here is the correct default
+   (GSAP overrides it during animation, then restores it via clearProps).
+   ============================================================ */
+.finale-title,
+.finale-pre,
+.finale-icon,
+.finale-quote,
+.finale-wish {
+  opacity: 1; /* default visible — GSAP temporarily sets to 0 during animation only */
+}
+
+/* ============================================================
+   MOBILE PERFORMANCE ADDITIONS — background orbs & aurora
+   Completes the previous mobile performance pass by targeting
+   the remaining animated blur elements.
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* Global background orbs use filter:blur + animation — heavy on mobile GPU */
+  .bg-orb-a,
+  .bg-orb-b,
+  .bg-orb-c,
+  .bg-orb-d {
+    display: none;
+  }
+
+  /* Aurora divs animate opacity+transform — reduce to static on mobile */
+  .bg-aurora-1,
+  .bg-aurora-2,
+  .bg-aurora-3 {
+    animation: none !important;
+    opacity: 0.15;
+  }
+
+  /* bg-fog has backdrop-filter on some builds — strip it */
+  .bg-fog {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Finale glow ring animation — ringPulse uses scale transform, keep but simplify */
+  .finale-glow-ring {
+    animation: none !important;
+    opacity: 0.4;
+  }
+
+  /* finale-icon floats with finaleIconFloat — keep but reduce */
+  .finale-icon {
+    filter: none !important; /* remove drop-shadow on mobile */
+  }
+
+  /* finale-pre drop-shadow filter */
+  .finale-pre {
+    filter: none !important;
+  }
+}

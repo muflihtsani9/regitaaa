@@ -1,0 +1,298 @@
+/* ============================================================
+   LUXURY BIRTHDAY EXPERIENCE — gallery.css
+   Gallery / Swiper Slider — Slides · Captions · Controls
+   ============================================================ */
+
+/* ============================================================
+   GALLERY SECTION WRAPPER
+============================================================ */
+.gallery-section {
+  padding: var(--section-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-section .section-header {
+  padding: 0 clamp(1.5rem, 5vw, 2rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ============================================================
+   SWIPER CONTAINER
+============================================================ */
+.gallery-swiper-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+#gallerySwiper {
+  width: 100%;
+  padding: 1.5rem clamp(1rem, 4vw, 2rem) 0;
+  overflow: visible;
+}
+
+/* ============================================================
+   SLIDES
+============================================================ */
+.gallery-slide { height: auto; user-select: none; }
+
+.slide-inner {
+  position: relative;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(79,195,247,0.04) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: transform 0.5s var(--ease-luxury), box-shadow 0.5s var(--ease-luxury), border-color 0.4s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-slide-active .slide-inner,
+.slide-inner:hover {
+  border-color: rgba(79,195,247,0.25);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.5), 0 0 40px rgba(79,195,247,0.08);
+  transform: translateY(-4px);
+}
+
+.slide-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose), var(--gold), transparent);
+  opacity: 0.4;
+  z-index: 2;
+}
+
+/* ============================================================
+   IMAGE AREA
+============================================================ */
+.slide-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.slide-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 1;
+}
+
+.slide-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(5,4,7,0.1) 0%, rgba(5,4,7,0) 40%, rgba(5,4,7,0.55) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Placeholder art when image missing */
+.slide-placeholder-art {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.art-circle { position: absolute; border-radius: 50%; }
+.art-c1 {
+  width: 180px; height: 180px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: artPulse 6s ease-in-out infinite;
+}
+.art-c2 {
+  width: 100px; height: 100px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: artPulse 6s ease-in-out infinite reverse;
+}
+.art-icon {
+  font-size: 3.5rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 20px rgba(79,195,247,0.6));
+  animation: finaleIconFloat 4s ease-in-out infinite;
+}
+
+.slide-ken-burns {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 30% 30%, rgba(255,255,255,0.04) 0%, transparent 60%);
+  animation: kenBurnsShine 8s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ============================================================
+   CAPTION
+============================================================ */
+.slide-caption {
+  padding: clamp(1.4rem, 3vw, 2rem) clamp(1.2rem, 3vw, 1.8rem);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
+}
+
+.slide-num {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 0.6rem;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 6px var(--rose));
+}
+
+.slide-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.slide-quote {
+  font-family: var(--font-body);
+  font-size: clamp(0.88rem, 1.4vw, 0.98rem);
+  font-style: italic;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+}
+
+.slide-ambient-glow {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60%; height: 80px;
+  background: radial-gradient(ellipse, rgba(79,195,247,0.1) 0%, transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   PAGINATION
+============================================================ */
+.gallery-pagination {
+  position: absolute;
+  bottom: 1rem;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.gallery-pagination .swiper-pagination-bullet {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  opacity: 1;
+  transition: background 0.3s, transform 0.3s, width 0.3s;
+  cursor: pointer;
+}
+
+.gallery-pagination .swiper-pagination-bullet-active {
+  background: var(--rose);
+  width: 22px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px var(--rose);
+}
+
+/* ============================================================
+   NAV ARROWS
+============================================================ */
+.gallery-prev,
+.gallery-next {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(79,195,247,0.35);
+  background: rgba(5,4,7,0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--white);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.35s, background 0.35s, box-shadow 0.35s, transform 0.25s;
+}
+
+.gallery-prev { left: clamp(0.25rem, 2vw, 1rem); }
+.gallery-next { right: clamp(0.25rem, 2vw, 1rem); }
+
+.gallery-prev:hover,
+.gallery-next:hover {
+  border-color: var(--rose);
+  background: rgba(79,195,247,0.15);
+  box-shadow: 0 0 20px rgba(79,195,247,0.2);
+}
+
+.gallery-prev.swiper-button-disabled,
+.gallery-next.swiper-button-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ============================================================
+   HINT BAR
+============================================================ */
+.gallery-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.gallery-hint p {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+}
+
+.gallery-hint-line {
+  width: 30px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,195,247,0.3));
+}
+.gallery-hint-line:last-child {
+  background: linear-gradient(90deg, rgba(79,195,247,0.3), transparent);
+}

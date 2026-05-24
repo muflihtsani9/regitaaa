@@ -1,0 +1,272 @@
+/* ============================================================
+   LUXURY BIRTHDAY EXPERIENCE — effects.css
+   Cinematic Effects: Global BG · Intro Screen · Orbs · Noise · Fog
+   ============================================================ */
+
+/* ============================================================
+   GLOBAL CINEMATIC BACKGROUND
+============================================================ */
+.global-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0.5;
+}
+
+/* Aurora layers */
+.bg-aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0;
+  animation: auroraFloat 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.bg-aurora-1 {
+  width: 900px; height: 600px;
+  background: radial-gradient(ellipse, rgba(79,195,247,0.18) 0%, transparent 70%);
+  top: -200px; left: -200px;
+  animation-duration: 22s;
+}
+.bg-aurora-2 {
+  width: 800px; height: 700px;
+  background: radial-gradient(ellipse, rgba(92,107,192,0.12) 0%, transparent 70%);
+  bottom: -300px; right: -200px;
+  animation-duration: 28s;
+  animation-delay: -8s;
+}
+.bg-aurora-3 {
+  width: 600px; height: 500px;
+  background: radial-gradient(ellipse, rgba(144,202,249,0.09) 0%, transparent 70%);
+  top: 40%; left: 30%;
+  animation-duration: 18s;
+  animation-delay: -14s;
+}
+
+/* Background mesh gradient */
+.bg-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(10,40,90,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 80% 20%, rgba(20,50,120,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 70% at 10% 80%, rgba(5,30,80,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 90% 90%, rgba(30,80,150,0.2) 0%, transparent 55%);
+}
+
+/* Noise texture */
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Depth orbs */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  will-change: transform;
+}
+.bg-orb-a {
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(79,195,247,0.08) 0%, transparent 70%);
+  top: -300px; left: -200px;
+  animation: bgOrbA 25s ease-in-out infinite;
+}
+.bg-orb-b {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(92,107,192,0.07) 0%, transparent 70%);
+  bottom: -200px; right: -200px;
+  animation: bgOrbB 30s ease-in-out infinite;
+}
+.bg-orb-c {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(144,202,249,0.07) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: bgOrbC 20s ease-in-out infinite;
+}
+.bg-orb-d {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(80,120,200,0.05) 0%, transparent 70%);
+  top: 30%; right: 10%;
+  animation: bgOrbA 35s ease-in-out infinite reverse;
+}
+
+/* Fog effect */
+.bg-fog {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 50% at 50% 0%, transparent 40%, rgba(3,8,16,0.6) 100%);
+}
+
+/* ============================================================
+   CINEMATIC INTRO SCREEN
+============================================================ */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  overflow: hidden;
+}
+.intro.hidden { display: none; }
+
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, #081830 0%, var(--black) 65%);
+}
+
+.intro-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+
+.intro-aurora {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 30% 30%, rgba(79,195,247,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 70% 70%, rgba(92,107,192,0.1) 0%, transparent 55%);
+  animation: introAurora 6s ease-in-out infinite alternate;
+}
+
+.intro-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-logo {
+  font-size: 2.5rem;
+  color: var(--rose);
+  opacity: 0;
+  transform: scale(0.3) rotate(-180deg);
+  transition: opacity 1.2s var(--ease-spring), transform 1.4s var(--ease-spring);
+  margin-bottom: 2.8rem;
+  filter: drop-shadow(0 0 30px var(--rose)) drop-shadow(0 0 70px rgba(79,195,247,0.5));
+}
+.intro-logo.show { opacity: 1; transform: scale(1) rotate(0deg); }
+
+.intro-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 2.4rem;
+}
+
+.intro-line-text {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: clamp(0.7rem, 1.6vw, 0.95rem);
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: rgba(144,202,249,0.7);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+}
+.intro-line-text.show { opacity: 1; transform: translateY(0); }
+
+.intro-line-large {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  letter-spacing: 0.12em;
+  font-style: italic;
+  font-weight: 300;
+  color: transparent;
+  background: linear-gradient(135deg, var(--rose-light), var(--rose), var(--gold), var(--rose-light));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientShift 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 50px rgba(79,195,247,0.4));
+  line-height: 1.1;
+  margin: 0.3rem 0;
+}
+
+.intro-line-sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  letter-spacing: 0.45em;
+  color: rgba(232,213,176,0.6);
+  text-transform: lowercase;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1s var(--ease-out) 0.1s, transform 1s var(--ease-out) 0.1s;
+}
+.intro-line-sub.show { opacity: 1; transform: translateY(0); }
+
+.intro-rule {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose), var(--gold), transparent);
+  margin: 0 auto 1.6rem;
+  transition: width 1.4s var(--ease-out);
+  box-shadow: 0 0 12px var(--rose);
+}
+.intro-rule.show { width: min(380px, 70vw); }
+
+.intro-date-line {
+  font-family: var(--font-ui);
+  font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+}
+.intro-date-line.show { opacity: 1; transform: translateY(0); }
+
+.intro-wipe { display: none; }
+
+/* ============================================================
+   HERO ORB LAYERS & PARALLAX
+============================================================ */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform;
+}
+.hero-orb-1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(79,195,247,0.22) 0%, transparent 70%);
+  top: -200px; left: -150px;
+  animation: orbFloat1 14s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(92,107,192,0.18) 0%, transparent 70%);
+  bottom: -150px; right: -150px;
+  animation: orbFloat2 18s ease-in-out infinite;
+}
+.hero-orb-3 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(144,202,249,0.14) 0%, transparent 70%);
+  top: 45%; left: 55%;
+  animation: orbFloat3 11s ease-in-out infinite;
+}
